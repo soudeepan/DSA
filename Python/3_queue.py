@@ -1,49 +1,71 @@
-# Queue implementation using collections.deque
 from collections import deque
 
-queue = deque()
+# Create an empty deque
+deque = deque()
 
-# Enqueue operation
-def enqueue():
-    ele = input("Enter element to enqueue: ")
-    queue.append(ele)
-    print(ele, "is enqueued.")
-    print("Queue:", queue)
+# Function to add an element to the front of the deque
+def add_front():
+    ele = input("Enter element to add to the front: ")
+    deque.appendleft(ele)
+    print(ele, "is added to the front.")
+    print("Deque:", deque)
 
-# Dequeue operation
-def dequeue():
-    if queue:
-        ele = queue.popleft()
-        print(ele, "is dequeued.")
-        print("Queue:", queue)
+# Function to add an element to the rear of the deque
+def add_rear():
+    ele = input("Enter element to add to the rear: ")
+    deque.append(ele)
+    print(ele, "is added to the rear.")
+    print("Deque:", deque)
+
+# Function to remove an element from the front of the deque
+def remove_front():
+    if deque:
+        ele = deque.popleft()
+        print(ele, "is removed from the front.")
+        print("Deque:", deque)
     else:
-        print("Queue is empty.")
+        print("Deque is empty.")
 
-# Display queue
+# Function to remove an element from the rear of the deque
+def remove_rear():
+    if deque:
+        ele = deque.pop()
+        print(ele, "is removed from the rear.")
+        print("Deque:", deque)
+    else:
+        print("Deque is empty.")
+
+# Function to display the deque
 def display():
-    if queue:
-        print("Queue:", queue)
+    if deque:
+        print("Deque:", deque)
     else:
-        print("Queue is empty.")
+        print("Deque is empty.")
 
-# Menu
+# Menu-driven interface
 end = False
 while not end:
     print("\nMenu:")
-    print("1. Enqueue")
-    print("2. Dequeue")
-    print("3. Display queue")
-    print("4. Exit")
+    print("1. Add to front")
+    print("2. Add to rear")
+    print("3. Remove from front")
+    print("4. Remove from rear")
+    print("5. Display deque")
+    print("6. Exit")
 
     choice = input("Enter your choice: ")
 
     if choice == '1':
-        enqueue()
+        add_front()
     elif choice == '2':
-        dequeue()
+        add_rear()
     elif choice == '3':
-        display()
+        remove_front()
     elif choice == '4':
+        remove_rear()
+    elif choice == '5':
+        display()
+    elif choice == '6':
         end = True
     else:
-        print("Invalid choice. Please enter a number between 1 and 4.")
+        print("Invalid choice. Please enter a number between 1 and 6.")
